@@ -1,20 +1,23 @@
 import CreatePost from "@/components/CreatePost";
+import WhoToFollow from "@/components/WhoToFollow";
 import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
-  const user = await currentUser()
+  const user = await currentUser();
   return (
     <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
-    <div className="lg:col-span-6">
-      {user ? <CreatePost /> : null}
+      <div className="lg:col-span-6">
+        {user ? <CreatePost /> : null}
 
-      {/* <div className="space-y-6">
-        {posts.map((post) => (
+        <div className="space-y-6">
+          {/* {posts.map((post) => (
           <PostCard key={post.id} post={post} dbUserId={dbUserId} />
-        ))}
-      </div> */}
-    </div>
-
+        ))} */}
+        </div>
+      </div>
+      <div className="lg:col-span-4">
+        <WhoToFollow />
+      </div>
     </div>
   );
 }
